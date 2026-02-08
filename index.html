@@ -9,46 +9,70 @@
 
 <body class="light">
 
+<!-- 🔐 LOCK SCREEN -->
 <div id="lockScreen">
-  <h2>🔐 Private for Mau</h2>
+  <h2>🔐 Only for Mau</h2>
   <input type="password" id="password" placeholder="Enter password ❤️">
   <button onclick="unlock()">Open My Heart</button>
   <p id="error"></p>
 </div>
 
+<!-- ❤️ MAIN CONTENT -->
 <div id="content" class="hidden">
 
-  <!-- 🌙 Night Mode -->
   <button class="modeBtn" onclick="toggleMode()">🌙</button>
+  <button class="musicBtn" onclick="toggleMusic()">🎵</button>
 
-  <!-- 🎵 Music -->
   <audio id="music" loop>
     <source src="music/romantic.mp3" type="audio/mpeg">
   </audio>
-  <button class="musicBtn" onclick="toggleMusic()">🎵</button>
 
   <h1>For My Valentine, Mau ❤️</h1>
-
-  <!-- ⏰ Countdown -->
   <div id="countdown"></div>
 
-  <!-- 💌 Love Letter -->
-  <button class="loveBtn" onclick="openLetter()">💌 Open Love Letter</button>
+  <!-- 💝 VALENTINE WEEK -->
+  <h2>💝 Valentine Week</h2>
+  <div class="week">
+    <div class="vday" data-date="2026-02-07">🌹 Rose Day<br><span>My rose is you</span></div>
+    <div class="vday" data-date="2026-02-08">💍 Propose Day<br><span>Forever with me?</span></div>
+    <div class="vday" data-date="2026-02-09">🍫 Chocolate Day<br><span>Sweet like you</span></div>
+    <div class="vday" data-date="2026-02-10">🧸 Teddy Day<br><span>Warm hugs</span></div>
+    <div class="vday" data-date="2026-02-11">🤝 Promise Day<br><span>Always us</span></div>
+    <div class="vday" data-date="2026-02-12">🤗 Hug Day<br><span>Hold me</span></div>
+    <div class="vday" data-date="2026-02-13">😘 Kiss Day<br><span>All mine</span></div>
+  </div>
+
+  <!-- 💌 LOVE LETTER -->
+  <button class="loveBtn" onclick="openLetter()">💌 Love Letter</button>
 
   <div id="letter">
     <div class="letterBox">
       <span onclick="closeLetter()">❌</span>
       <h2>My Mau ❤️</h2>
       <p>
-        From the moment you came into my life,  
-        every day feels like Valentine’s Day.  
-        You are my smile, my peace, my forever.  
-        I love you endlessly, Mau 💖
+        You are my favorite thought, my calm place, my forever.
+        I don’t need a special day to love you,  
+        but Valentine’s Day feels perfect because it’s you.
+        I love you endlessly ❤️
       </p>
     </div>
   </div>
 
+  <!-- 📸 GALLERY -->
+  <h2>📸 Our Memories</h2>
+  <div class="gallery">
+    <img src="images/mau.jpg">
+    <img src="images/memory1.jpg">
+    <img src="images/memory2.jpg">
+  </div>
+
+  <!-- 🎆 FIREWORKS -->
+  <canvas id="fireworks"></canvas>
+
 </div>
+
+<!-- 💖 FLOATING TEXT -->
+<div class="float">I ❤️ You Mau</div>
 
 <script src="script.js"></script>
 </body>
