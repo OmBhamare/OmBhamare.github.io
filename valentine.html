@@ -273,8 +273,17 @@ Mau ❤️
 /* DATE LOCK */
 const params=new URLSearchParams(window.location.search);
 const isPreview=params.get("preview")==="true";
-const today=new Date();
-const vDay=new Date(today.getFullYear(),1,14);
+/* DATE LOCK */
+  const today = new Date();
+  today.setHours(0,0,0,0); // normalize time
+
+  const roseDay = new Date(today.getFullYear(), 1, 14); // Feb = 1
+  roseDay.setHours(0,0,0,0);
+
+  if (today >= roseDay) {
+    document.getElementById("locked").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }
 
 function unlock(){
   if(pass.value.toLowerCase()==="mau"){
