@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Propose Day 💍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/day.css">
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #3a0ca3, #10002b);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .ring {
+      font-size: 60px;
+      margin-top: 10px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.12);
+      margin: 25px;
+      padding: 25px;
+      border-radius: 20px;
+    }
+
+    .shayari {
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .quote {
+      margin-top: 15px;
+      font-size: 17px;
+      opacity: 0.9;
+    }
+
+    .question {
+      font-size: 26px;
+      margin: 25px 10px;
+      color: #ffd166;
+    }
+
+    .yesBtn {
+      padding: 14px 26px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: #ffd166;
+      color: #3a0ca3;
+      cursor: pointer;
+    }
+
+    .yesMsg {
+      display: none;
+      font-size: 22px;
+      margin-top: 20px;
+      color: #ffccd5;
+    }
+
+    .frame {
+      border: 3px solid #ffd166;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<canvas></canvas>
+
+<h1>💍 Propose Day</h1>
+<div class="ring">💍</div>
+
+<p>Today I gather all my courage… for you, Mau ❤️</p>
+
+<!-- 🎵 MUSIC -->
+<audio autoplay loop>
+  <source src="music/propose.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💌 SHAYARI + QUOTE -->
+<div class="card">
+  <div class="shayari">
+    Lafzon mein bayaan karna mushkil hai,<br>
+    Par dil maanta hai tum hi ho Mau ❤️<br>
+    Har sapne ka ek hi matlab hai,<br>
+    Kya zindagi bhar mera saath dogi? 💍
+  </div>
+
+  <div class="quote">
+    “I didn’t fall for you in one day,  
+    I fell for you every single day.”
+  </div>
+</div>
+
+<!-- 💍 QUESTION -->
+<div class="question">
+  Will you be mine forever, Mau? 💖
+</div>
+
+<button class="yesBtn" onclick="sayYes()">YES 💍</button>
+
+<div class="yesMsg" id="yesMsg">
+  You just made me the happiest person alive ❤️  
+  This is forever, Mau ♾️
+</div>
+
+<!-- 🖼️ MEMORIES -->
+<div class="frame">
+  <div class="gallery">
+    <img src="images/propose/1.jpg">
+    <img src="images/propose/2.jpg">
+    <img src="images/propose/3.jpg">
+  </div>
+</div>
+
+<script src="js/day.js"></script>
+<script>
+  // 🔒 Date Lock
+  checkDate("2026-02-08");
+
+  // 🎆 Fireworks
+  fireworks();
+
+  // 💖 YES BUTTON
+  function sayYes() {
+    document.getElementById("yesMsg").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
