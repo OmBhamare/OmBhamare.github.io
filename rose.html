@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rose Day 🌹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/day.css">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #b1124c, #ff8fab);
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      margin: 20px;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    .shayari {
+      font-size: 22px;
+      line-height: 1.6;
+    }
+
+    .quote {
+      font-size: 18px;
+      margin-top: 15px;
+      opacity: 0.9;
+    }
+
+    .frame {
+      border: 4px solid #ffccd5;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<canvas></canvas>
+
+<h1>🌹 Rose Day</h1>
+<p>For the most beautiful rose of my life, Mau ❤️</p>
+
+<!-- 🎵 MUSIC -->
+<audio autoplay loop>
+  <source src="music/rose.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💌 SHAYARI + QUOTE -->
+<div class="card">
+  <div class="shayari">
+    Gulab toh sirf phool hota hai,<br>
+    Par tum meri zindagi ki khushboo ho Mau 🌹<br>
+    Tum saath ho toh har din bahaar hai,<br>
+    Warna zindagi sirf ek intezaar ho ❤️
+  </div>
+
+  <div class="quote">
+    “I don’t need a rose to express my love,  
+    because **you are my rose**, Mau.”
+  </div>
+</div>
+
+<!-- 🖼️ MEMORY FRAME -->
+<div class="frame">
+  <div class="gallery">
+    <img src="images/rose/1.jpg">
+    <img src="images/rose/2.jpg">
+    <img src="images/rose/3.jpg">
+    <img src="images/rose/4.jpg">
+  </div>
+</div>
+
+<script src="js/day.js"></script>
+<script>
+  checkDate("2026-02-07");
+  fireworks();
+</script>
+
+</body>
+</html>
