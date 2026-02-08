@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine’s Day ❤️ | For Mau</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(180deg, #0b0014, #1a002b);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* LOCK */
+  .lock {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .lock-box {
+    background: rgba(0,0,0,0.6);
+    padding: 30px;
+    border-radius: 22px;
+    width: 90%;
+    max-width: 350px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    background: #ff4d6d;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  /* CONTENT */
+  .content {
+    display: none;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #ffb3c6;
+  }
+
+  .subtitle {
+    text-align: center;
+    opacity: 0.85;
+    margin-bottom: 30px;
+  }
+
+  /* COUNTDOWN */
+  .countdown {
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 20px 0;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    background: rgba(255,255,255,0.07);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 30px 0;
+  }
+
+  .timeline h2 {
+    text-align: center;
+  }
+
+  .timeline ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .timeline li {
+    margin: 10px 0;
+    opacity: 0.9;
+  }
+
+  /* MEMORIES */
+  .gallery {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    margin: 30px 0;
+  }
+
+  .gallery img {
+    height: 200px;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.25);
+  }
+
+  /* LETTER */
+  .letter {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 20px;
+    white-space: pre-line;
+  }
+
+  /* PROPOSAL */
+  .proposal {
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .proposal button {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    margin: 10px;
+  }
+
+  /* FIREWORK */
+  .firework {
+    position: fixed;
+    font-size: 24px;
+    animation: boom 2s forwards;
+  }
+
+  @keyframes boom {
+    to { transform: scale(2.5); opacity: 0; }
+  }
+
+  footer {
+    text-align: center;
+    margin: 40px 0;
+    opacity: 0.75;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- LOCK -->
+<div class="lock" id="lock">
+  <div class="lock-box">
+    <h2>❤️ Only for Mau ❤️</h2>
+    <p>Enter the password</p>
+    <input type="password" id="pass" placeholder="Secret word">
+    <button onclick="unlock()">Unlock 💌</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content">
+
+  <h1>Happy Valentine’s Day, Mau ❤️</h1>
+  <p class="subtitle">Every day led me to this moment.</p>
+
+  <!-- MUSIC -->
+  <audio autoplay loop>
+    <source src="valentine-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown" id="countdown"></div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <h2>Our Valentine Journey 🧭</h2>
+    <ul>
+      <li>🌹 Rose Day – Love bloomed</li>
+      <li>💍 Promise Day – Forever decided</li>
+      <li>🤍 Hug Day – Comfort found</li>
+      <li>💋 Kiss Day – Hearts connected</li>
+      <li>❤️ Valentine’s Day – Destiny</li>
+    </ul>
+  </div>
+
+  <!-- MEMORIES -->
+  <div class="gallery">
+    <img src="v1.jpg">
+    <img src="v2.jpg">
+    <img src="v3.jpg">
+  </div>
+
+  <!-- LETTER -->
+  <div class="letter">
+Mau ❤️,
+
+You became my favorite thought,  
+my calm in chaos,  
+my smile without reason.
+
+This isn’t just Valentine’s Day…  
+this is me choosing you — today, tomorrow, always.
+
+तू साथ हो तो हर दिन Valentine है ❤️
+  </div>
+
+  <!-- PROPOSAL -->
+  <div class="proposal">
+    <h2>Will you be my Valentine… forever? 💍</h2>
+    <button onclick="yes()">YES ❤️</button>
+    <button onclick="no()">NO 😢</button>
+  </div>
+
+  <footer>
+    Written with love,  
+    only for you ❤️
+  </footer>
+
+</div>
+
+<script>
+  const PASSWORD = "Mau";
+
+  function unlock() {
+    if (document.getElementById("pass").value === PASSWORD) {
+      document.getElementById("lock").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    } else {
+      alert("Wrong password 💔");
+    }
+  }
+
+  // COUNTDOWN TO 14 FEB 12:00 AM
+  const target = new Date(new Date().getFullYear(), 1, 14, 0, 0);
+  setInterval(() => {
+    const now = new Date();
+    const diff = target - now;
+    if (diff > 0) {
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      document.getElementById("countdown").innerText =
+        `⏰ ${h}h ${m}m ${s}s to forever`;
+    }
+  }, 1000);
+
+  function yes() {
+    for (let i = 0; i < 25; i++) {
+      setTimeout(() => {
+        const f = document.createElement("div");
+        f.className = "firework";
+        f.innerText = "✨❤️✨";
+        f.style.left = Math.random() * 100 + "vw";
+        f.style.top = Math.random() * 60 + "vh";
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 2000);
+      }, i * 200);
+    }
+    alert("She said YES ❤️🔥");
+  }
+
+  function no() {
+    alert("Nice try 😏 You’re mine anyway ❤️");
+  }
+</script>
+
+</body>
+</html>
