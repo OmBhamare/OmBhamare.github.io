@@ -3,168 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine’s Day ❤️ | For Mau</title>
+<title>Valentine Day ❤️</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(180deg, #0b0014, #1a002b);
-    color: #fff;
-    overflow-x: hidden;
-  }
+:root{
+  --bg1:#2b0015;
+  --bg2:#4d0026;
+  --card:rgba(255,255,255,0.14);
+  --text:#fff0f5;
+  --glow:#ff4d88;
+  --nightGlow:#ff8fab;
+}
 
-  /* LOCK */
-  .lock {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:radial-gradient(circle,var(--bg2),var(--bg1));
+  color:var(--text);
+  overflow-x:hidden;
+  animation:nightGlow 6s ease-in-out infinite;
+}
 
-  .lock-box {
-    background: rgba(0,0,0,0.6);
-    padding: 30px;
-    border-radius: 22px;
-    width: 90%;
-    max-width: 350px;
-  }
+/* 🌙 AUTO NIGHT GLOW */
+@keyframes nightGlow{
+  0%,100%{box-shadow:inset 0 0 120px rgba(255,77,136,.25);}
+  50%{box-shadow:inset 0 0 180px rgba(255,143,171,.45);}
+}
 
-  input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-    text-align: center;
-  }
+/* LOCK */
+.locked{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
 
-  button {
-    margin-top: 15px;
-    padding: 12px;
-    width: 100%;
-    border-radius: 12px;
-    border: none;
-    background: #ff4d6d;
-    color: #fff;
-    font-size: 1.1rem;
-    cursor: pointer;
-  }
+.lock-box{
+  background:rgba(255,255,255,0.18);
+  padding:34px;
+  border-radius:30px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 45px rgba(255,77,136,0.6);
+}
 
-  /* CONTENT */
-  .content {
-    display: none;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-  }
+.lock-box input{
+  margin-top:15px;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  width:80%;
+}
 
-  h1 {
-    text-align: center;
-    font-size: 2.8rem;
-    color: #ffb3c6;
-  }
+.lock-box button{
+  margin-top:12px;
+  padding:10px 22px;
+  border:none;
+  border-radius:20px;
+  background:#ff4d88;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+}
 
-  .subtitle {
-    text-align: center;
-    opacity: 0.85;
-    margin-bottom: 30px;
-  }
+.hint{
+  margin-top:10px;
+  font-size:.85rem;
+  opacity:.75;
+}
 
-  /* COUNTDOWN */
-  .countdown {
-    text-align: center;
-    font-size: 1.4rem;
-    margin: 20px 0;
-  }
+/* CONTENT */
+.content{
+  display:none;
+  max-width:420px;
+  margin:auto;
+  padding:20px;
+  text-align:center;
+}
 
-  /* TIMELINE */
-  .timeline {
-    background: rgba(255,255,255,0.07);
-    padding: 20px;
-    border-radius: 20px;
-    margin: 30px 0;
-  }
+h1{
+  font-size:2.6rem;
+  margin-top:20px;
+  text-shadow:0 0 18px var(--glow);
+}
 
-  .timeline h2 {
-    text-align: center;
-  }
+.subtitle{
+  font-size:1.1rem;
+  opacity:.85;
+  margin-bottom:25px;
+}
 
-  .timeline ul {
-    list-style: none;
-    padding: 0;
-  }
+/* 💌 TERMS */
+.terms{
+  background:var(--card);
+  padding:18px;
+  border-radius:20px;
+  margin-bottom:20px;
+  text-align:left;
+  font-size:.95rem;
+}
 
-  .timeline li {
-    margin: 10px 0;
-    opacity: 0.9;
-  }
+.terms label{
+  cursor:pointer;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
 
-  /* MEMORIES */
-  .gallery {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    margin: 30px 0;
-  }
+.terms input{
+  margin-top:4px;
+}
 
-  .gallery img {
-    height: 200px;
-    border-radius: 18px;
-    box-shadow: 0 0 25px rgba(255,255,255,0.25);
-  }
+/* LETTER BUTTON */
+.open-letter{
+  padding:14px 30px;
+  font-size:1.1rem;
+  border:none;
+  border-radius:30px;
+  background:#888;
+  color:white;
+  cursor:not-allowed;
+  box-shadow:none;
+  transition:.4s;
+}
 
-  /* LETTER */
-  .letter {
-    background: rgba(255,255,255,0.08);
-    padding: 25px;
-    border-radius: 20px;
-    white-space: pre-line;
-  }
+.open-letter.active{
+  background:#ff4d88;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(255,77,136,.75);
+}
 
-  /* PROPOSAL */
-  .proposal {
-    text-align: center;
-    margin: 40px 0;
-  }
+/* LETTER */
+.letter{
+  display:none;
+  margin-top:30px;
+  background:var(--card);
+  padding:28px;
+  border-radius:28px;
+  backdrop-filter:blur(10px);
+  animation:fadeIn 1.3s ease;
+}
 
-  .proposal button {
-    width: auto;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    margin: 10px;
-  }
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(.94);}
+  to{opacity:1;transform:scale(1);}
+}
 
-  /* FIREWORK */
-  .firework {
-    position: fixed;
-    font-size: 24px;
-    animation: boom 2s forwards;
-  }
+.letter img{
+  width:100%;
+  border-radius:26px;
+  border:4px solid rgba(255,255,255,.75);
+  box-shadow:0 0 35px var(--glow);
+  margin-bottom:20px;
+}
 
-  @keyframes boom {
-    to { transform: scale(2.5); opacity: 0; }
-  }
+.letter-text{
+  white-space:pre-line;
+  line-height:1.9;
+  font-size:1.05rem;
+}
 
-  footer {
-    text-align: center;
-    margin: 40px 0;
-    opacity: 0.75;
-  }
+/* 💍 PROPOSE */
+.propose{
+  display:none;
+  margin-top:25px;
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  font-size:1.15rem;
+  background:linear-gradient(135deg,#ff4d88,#ff8fab);
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 40px rgba(255,143,171,.8);
+  animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:floatUp 6s linear infinite;
+  pointer-events:none;
+  opacity:.85;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1);}
+  100%{transform:translateY(-120vh) scale(1.6);opacity:0;}
+}
+
+footer{
+  margin:40px 0;
+  opacity:.75;
+}
 </style>
 </head>
 
 <body>
 
 <!-- LOCK -->
-<div class="lock" id="lock">
+<div class="locked" id="locked">
   <div class="lock-box">
-    <h2>❤️ Only for Mau ❤️</h2>
-    <p>Enter the password</p>
-    <input type="password" id="pass" placeholder="Secret word">
-    <button onclick="unlock()">Unlock 💌</button>
+    <h1>❤️ Valentine Day ❤️</h1>
+    <p>Unlocks on <b>14 February</b></p>
+    <input type="password" id="pass" placeholder="Enter the secret name">
+    <br>
+    <button onclick="unlock()">Unlock 💖</button>
+    <div class="hint">Hint: My world 🌍 | Starts with M</div>
   </div>
 </div>
 
@@ -172,107 +225,93 @@
 <div class="content" id="content">
 
   <h1>Happy Valentine’s Day, Mau ❤️</h1>
-  <p class="subtitle">Every day led me to this moment.</p>
+  <p class="subtitle">Before opening my heart… accept the love terms 💌</p>
 
-  <!-- MUSIC -->
   <audio autoplay loop>
     <source src="valentine-song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- COUNTDOWN -->
-  <div class="countdown" id="countdown"></div>
-
-  <!-- TIMELINE -->
-  <div class="timeline">
-    <h2>Our Valentine Journey 🧭</h2>
-    <ul>
-      <li>🌹 Rose Day – Love bloomed</li>
-      <li>💍 Promise Day – Forever decided</li>
-      <li>🤍 Hug Day – Comfort found</li>
-      <li>💋 Kiss Day – Hearts connected</li>
-      <li>❤️ Valentine’s Day – Destiny</li>
-    </ul>
+  <!-- TERMS -->
+  <div class="terms">
+    <label>
+      <input type="checkbox" id="agree" onchange="enableLetter()">
+      I agree to love you forever, support you always,  
+      forgive small fights, and never give up on us ❤️
+    </label>
   </div>
 
-  <!-- MEMORIES -->
-  <div class="gallery">
-    <img src="v1.jpg">
-    <img src="v2.jpg">
-    <img src="v3.jpg">
-  </div>
+  <button class="open-letter" id="openBtn" onclick="openLetter()" disabled>
+    💌 Open Love Letter
+  </button>
 
   <!-- LETTER -->
-  <div class="letter">
-Mau ❤️,
+  <div class="letter" id="letter">
+    <img src="7.jpeg">
 
-You became my favorite thought,  
-my calm in chaos,  
-my smile without reason.
+    <div class="letter-text">
+Mau ❤️  
 
-This isn’t just Valentine’s Day…  
-this is me choosing you — today, tomorrow, always.
+तू माझ्या आयुष्यात आलीस  
+आणि सगळं जग सुंदर झालं…  
 
-तू साथ हो तो हर दिन Valentine है ❤️
+मी वचन देतो,  
+प्रत्येक श्वासात  
+फक्त *तुझाच* राहीन 💖  
+
+— Forever Yours
+    </div>
+
+    <button class="propose" id="proposeBtn" onclick="finalYes()">
+      💍 Will you be my forever?
+    </button>
   </div>
 
-  <!-- PROPOSAL -->
-  <div class="proposal">
-    <h2>Will you be my Valentine… forever? 💍</h2>
-    <button onclick="yes()">YES ❤️</button>
-    <button onclick="no()">NO 😢</button>
-  </div>
-
-  <footer>
-    Written with love,  
-    only for you ❤️
-  </footer>
-
+  <footer>My forever Valentine ❤️</footer>
 </div>
 
 <script>
-  const PASSWORD = "Mau";
+/* DATE LOCK */
+const params=new URLSearchParams(window.location.search);
+const isPreview=params.get("preview")==="true";
+const today=new Date();
+const vDay=new Date(today.getFullYear(),1,14);
 
-  function unlock() {
-    if (document.getElementById("pass").value === PASSWORD) {
-      document.getElementById("lock").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    } else {
-      alert("Wrong password 💔");
-    }
+function unlock(){
+  if(pass.value.toLowerCase()==="mau"){
+    if(today.getDate()===vDay.getDate()&&today.getMonth()===vDay.getMonth()||isPreview){
+      locked.style.display="none";
+      content.style.display="block";
+    } else alert("Come back on 14 February ❤️");
+  } else alert("Wrong password 💔");
+}
+
+/* ENABLE LETTER */
+function enableLetter(){
+  const btn=document.getElementById("openBtn");
+  if(document.getElementById("agree").checked){
+    btn.disabled=false;
+    btn.classList.add("active");
   }
+}
 
-  // COUNTDOWN TO 14 FEB 12:00 AM
-  const target = new Date(new Date().getFullYear(), 1, 14, 0, 0);
-  setInterval(() => {
-    const now = new Date();
-    const diff = target - now;
-    if (diff > 0) {
-      const h = Math.floor(diff / (1000 * 60 * 60));
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-      document.getElementById("countdown").innerText =
-        `⏰ ${h}h ${m}m ${s}s to forever`;
-    }
-  }, 1000);
+/* OPEN LETTER */
+function openLetter(){
+  letter.style.display="block";
+  setTimeout(()=>proposeBtn.style.display="inline-block",4000);
 
-  function yes() {
-    for (let i = 0; i < 25; i++) {
-      setTimeout(() => {
-        const f = document.createElement("div");
-        f.className = "firework";
-        f.innerText = "✨❤️✨";
-        f.style.left = Math.random() * 100 + "vw";
-        f.style.top = Math.random() * 60 + "vh";
-        document.body.appendChild(f);
-        setTimeout(() => f.remove(), 2000);
-      }, i * 200);
-    }
-    alert("She said YES ❤️🔥");
-  }
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText=Math.random()>0.5?"❤️":"💖";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),7000);
+  },300);
+}
 
-  function no() {
-    alert("Nice try 😏 You’re mine anyway ❤️");
-  }
+function finalYes(){
+  alert("She already owns my forever ❤️");
+}
 </script>
 
 </body>
