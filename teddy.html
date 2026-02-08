@@ -201,17 +201,16 @@ Samajh lena main wahin hoon 🤍
   const params=new URLSearchParams(window.location.search);
   const isPreview=params.get("preview")==="true";
 
-  /* DATE LOCK (Feb 10) */
-  const today=new Date();
-  const teddyDay=new Date(today.getFullYear(),1,10);
+  /* DATE LOCK  */
+  const today = new Date();
+  today.setHours(0,0,0,0); // normalize time
 
-  if(
-    (today.getDate()===teddyDay.getDate() &&
-     today.getMonth()===teddyDay.getMonth())
-     || isPreview
-  ){
-    document.getElementById("locked").style.display="none";
-    document.getElementById("content").style.display="block";
+  const roseDay = new Date(today.getFullYear(), 1, 10); // Feb = 1
+  roseDay.setHours(0,0,0,0);
+
+  if (today >= roseDay) {
+    document.getElementById("locked").style.display = "none";
+    document.getElementById("content").style.display = "block";
   }
 
   /* FLOATING ELEMENTS */
