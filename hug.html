@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hug Day 🤍 | For Mau</title>
+
+  <style>
+    :root {
+      --bg1: #fdfbfb;
+      --bg2: #ebedee;
+      --text: #4a2c2a;
+      --card: rgba(255, 255, 255, 0.8);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .locked {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .lock-box {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .lock-box h1 {
+      font-size: 2rem;
+    }
+
+    .lock-box p {
+      opacity: 0.8;
+    }
+
+    /* MAIN CONTENT */
+    .content {
+      display: none;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 20px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    /* MEMORY SCROLL */
+    .memory-frame {
+      margin: 30px 0;
+      overflow-x: auto;
+      display: flex;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+
+    .memory-frame img {
+      height: 200px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    /* QUOTES */
+    .quote-box {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    .quote {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .shayari {
+      white-space: pre-line;
+      font-weight: 500;
+    }
+
+    /* HEART FLOAT */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="locked" id="locked">
+  <div class="lock-box">
+    <h1>🤍 Hug Day 🤍</h1>
+    <p>This page opens only on Hug Day</p>
+    <p>Come back on <b>12 February</b></p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content" id="content">
+
+  <h1>Happy Hug Day, Mau 🤍</h1>
+  <p class="subtitle">
+    If I could, I’d wrap my arms around you and never let go.
+  </p>
+
+  <!-- MUSIC -->
+  <audio autoplay loop>
+    <source src="hug-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MEMORIES -->
+  <div class="memory-frame">
+    <img src="hug1.jpg">
+    <img src="hug2.jpg">
+    <img src="hug3.jpg">
+    <img src="hug4.jpg">
+  </div>
+
+  <!-- QUOTES -->
+  <div class="quote-box">
+    <p class="quote">
+      “A hug is the perfect gift — one size fits all, and nobody minds if you give it back.”
+    </p>
+
+    <p class="shayari">
+तेरी एक झप्पी में सुकून मिल जाता है 🤍  
+सारी थकान, सारे ग़म मिट जाते हैं 🤍  
+कभी दूर मत जाना मुझसे Mau,  
+क्योंकि तेरे गले लगने से ही  
+मेरी दुनिया बस जाती है 🤍
+    </p>
+  </div>
+
+  <footer>
+    Forever yours 🤍  
+    — Your Valentine
+  </footer>
+</div>
+
+<script>
+  // DATE LOCK (Hug Day = Feb 12)
+  const today = new Date();
+  const hugDay = new Date(today.getFullYear(), 1, 12); // Feb = 1
+
+  if (
+    today.getDate() === hugDay.getDate() &&
+    today.getMonth() === hugDay.getMonth()
+  ) {
+    document.getElementById("locked").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }
+
+  // FLOATING HEARTS
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }, 600);
+</script>
+
+</body>
+</html>
