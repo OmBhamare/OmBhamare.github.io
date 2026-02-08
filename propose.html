@@ -209,14 +209,14 @@ Kya meri zindagi banogi? 💍
   const params = new URLSearchParams(window.location.search);
   const isPreview = params.get("preview") === "true";
 
-  /* DATE LOCK (Feb 8) */
+/* DATE LOCK (Rose Day = Feb 7) */
   const today = new Date();
-  const proposeDay = new Date(today.getFullYear(), 1, 8);
-  const isProposeDay =
-    today.getDate() === proposeDay.getDate() &&
-    today.getMonth() === proposeDay.getMonth();
+  today.setHours(0,0,0,0); // normalize time
 
-  if (isProposeDay || isPreview) {
+  const roseDay = new Date(today.getFullYear(), 1, 8); // Feb = 1
+  roseDay.setHours(0,0,0,0);
+
+  if (today >= roseDay) {
     document.getElementById("locked").style.display = "none";
     document.getElementById("content").style.display = "block";
   }
