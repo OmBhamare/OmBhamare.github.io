@@ -1,114 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Propose Day 💍 | For Mau</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Propose Day 💍 | For Mau</title>
 
-<style>
-  body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(180deg, #020024, #090979, #020024);
-    color: #fff;
-    overflow-x: hidden;
-  }
-
-  .lock {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .lock-box {
-    background: rgba(255,255,255,0.08);
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(6px);
-  }
-
-  .content {
-    display: none;
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 2.6rem;
-    color: #ffd700;
-  }
-
-  .subtitle {
-    text-align: center;
-    opacity: 0.85;
-    margin-bottom: 30px;
-  }
-
-  .ring {
-    text-align: center;
-    font-size: 80px;
-    animation: shine 2s infinite;
-    margin: 30px 0;
-  }
-
-  @keyframes shine {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-  }
-
-  .letter {
-    background: rgba(255,255,255,0.1);
-    padding: 25px;
-    border-radius: 20px;
-    white-space: pre-line;
-    font-size: 1.05rem;
-  }
-
-  footer {
-    text-align: center;
-    margin: 40px 0;
-    opacity: 0.75;
-  }
-
-  .star {
-    position: fixed;
-    top: -10px;
-    font-size: 14px;
-    animation: fall 8s linear infinite;
-    opacity: 0.7;
-  }
-
-  @keyframes fall {
-    to {
-      transform: translateY(110vh);
-      opacity: 0;
+  <style>
+    :root {
+      --bg1: #fff1eb;
+      --bg2: #ace0f9;
+      --text: #3a2a2a;
+      --card: rgba(255,255,255,0.85);
+      --glow: #ffb6c1;
     }
-  }
-</style>
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* LOCK SCREEN */
+    .locked {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .lock-box {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    /* CONTENT */
+    .content {
+      display: none;
+      padding: 20px;
+      max-width: 420px;
+      margin: auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-top: 20px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+
+    /* IMAGE */
+    .image-wrapper {
+      position: relative;
+      margin: 30px auto;
+      max-width: 320px;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      border-radius: 26px;
+      border: 4px solid #fff;
+      box-shadow:
+        0 0 25px var(--glow),
+        0 0 55px rgba(255,182,193,0.6);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* SPARKLES */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      animation: sparkle 2.5s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    /* FIREWORKS */
+    .firework {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: explode 1.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(15); opacity: 0; }
+    }
+
+    /* FLOATING HEARTS */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    /* QUOTES */
+    .quote-box {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 22px;
+      margin: 25px 0;
+    }
+
+    .quote {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .shayari {
+      white-space: pre-line;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    footer {
+      margin: 40px 0;
+      opacity: 0.75;
+    }
+  </style>
 </head>
 
 <body>
 
 <!-- LOCK -->
-<div class="lock" id="lock">
+<div class="locked" id="locked">
   <div class="lock-box">
     <h1>💍 Propose Day 💍</h1>
-    <p>This page opens on</p>
-    <p><b>8 February</b></p>
+    <p>This page opens only on Propose Day</p>
+    <p>Come back on <b>8 February</b></p>
   </div>
 </div>
 
 <!-- CONTENT -->
 <div class="content" id="content">
 
-  <h1>Mau, This Is My Question 💍</h1>
+  <h1>Happy Propose Day, Mau 💍</h1>
   <p class="subtitle">
-    Under every sky, in every life, I choose you.
+    Today, tomorrow, and forever — will you be mine?
   </p>
 
   <!-- MUSIC -->
@@ -116,50 +179,81 @@
     <source src="propose-song.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="ring">💍</div>
+  <!-- IMAGE -->
+  <div class="image-wrapper" id="imageArea">
+    <img src="6.jpeg" alt="My Proposal 💍">
+  </div>
 
-  <div class="letter">
-Mau ❤️,
+  <!-- QUOTES -->
+  <div class="quote-box">
+    <p class="quote">
+      “I found my home the moment I found you.”
+    </p>
 
-I don’t want a perfect story,
-I want a real one — with you.
-
-So here I am,
-with all my heart,
-asking just one thing…
-
-Will you walk this life with me? 💍
+    <p class="shayari">
+Dil ne sirf ek hi naam liya hai 💍  
+Har dua mein bas tu hi aayi hai 💖  
+Aaj nahi, har janam ke liye Mau,  
+Kya meri zindagi banogi? 💍
+    </p>
   </div>
 
   <footer>
-    Waiting for your yes 💖  
-    — Yours, always
+    Waiting for your yes 💍<br>
+    — Your Valentine
   </footer>
-
 </div>
 
 <script>
-  // STRICT DATE LOCK — Propose Day (Feb 8)
-  function checkDayStrict(day, month) {
-    const now = new Date();
-    if (now.getDate() === day && now.getMonth() === month) {
-      document.getElementById("lock").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    }
+  /* PREVIEW MODE */
+  const params = new URLSearchParams(window.location.search);
+  const isPreview = params.get("preview") === "true";
+
+  /* DATE LOCK (Feb 8) */
+  const today = new Date();
+  const proposeDay = new Date(today.getFullYear(), 1, 8);
+  const isProposeDay =
+    today.getDate() === proposeDay.getDate() &&
+    today.getMonth() === proposeDay.getMonth();
+
+  if (isProposeDay || isPreview) {
+    document.getElementById("locked").style.display = "none";
+    document.getElementById("content").style.display = "block";
   }
 
-  checkDayStrict(8, 1);
-
-  // FALLING STARS
+  /* FLOATING HEARTS */
   setInterval(() => {
-    const star = document.createElement("div");
-    star.className = "star";
-    star.innerText = "⭐";
-    star.style.left = Math.random() * 100 + "vw";
-    star.style.animationDuration = 6 + Math.random() * 4 + "s";
-    document.body.appendChild(star);
-    setTimeout(() => star.remove(), 10000);
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "💖";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = 4 + Math.random() * 3 + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 7000);
   }, 700);
+
+  /* SPARKLES */
+  const area = document.getElementById("imageArea");
+  setInterval(() => {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    area.appendChild(s);
+    setTimeout(() => s.remove(), 2500);
+  }, 350);
+
+  /* FIREWORKS */
+  setInterval(() => {
+    const fw = document.createElement("div");
+    fw.className = "firework";
+    fw.style.left = Math.random() * 100 + "%";
+    fw.style.top = Math.random() * 100 + "%";
+    fw.style.background =
+      `hsl(${330 + Math.random()*30},100%,75%)`;
+    area.appendChild(fw);
+    setTimeout(() => fw.remove(), 1500);
+  }, 1400);
 </script>
 
 </body>
