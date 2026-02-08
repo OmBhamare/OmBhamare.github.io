@@ -192,17 +192,17 @@ Bas haath pakad ke chalna hai… hamesha.
 const params=new URLSearchParams(window.location.search);
 const isPreview=params.get("preview")==="true";
 
-/* DATE LOCK – Feb 11 */
-const today=new Date();
-const promiseDay=new Date(today.getFullYear(),1,11);
-const isPromiseDay=
-  today.getDate()===promiseDay.getDate() &&
-  today.getMonth()===promiseDay.getMonth();
+/* DATE LOCK (Rose Day = Feb 7) */
+  const today = new Date();
+  today.setHours(0,0,0,0); // normalize time
 
-if(isPromiseDay||isPreview){
-  document.getElementById("locked").style.display="none";
-  document.getElementById("content").style.display="block";
-}
+  const roseDay = new Date(today.getFullYear(), 1, 11); // Feb = 1
+  roseDay.setHours(0,0,0,0);
+
+  if (today >= roseDay) {
+    document.getElementById("locked").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }
 
 /* HEARTS */
 setInterval(()=>{
