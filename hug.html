@@ -213,12 +213,12 @@
 
   /* DATE LOCK */
   const today = new Date();
-  const hugDay = new Date(today.getFullYear(), 1, 12);
-  const isHugDay =
-    today.getDate() === hugDay.getDate() &&
-    today.getMonth() === hugDay.getMonth();
+  today.setHours(0,0,0,0); // normalize time
 
-  if (isHugDay || isPreview) {
+  const roseDay = new Date(today.getFullYear(), 1, 12); // Feb = 1
+  roseDay.setHours(0,0,0,0);
+
+  if (today >= roseDay) {
     document.getElementById("locked").style.display = "none";
     document.getElementById("content").style.display = "block";
   }
