@@ -90,9 +90,25 @@
 
 <script src="js/day.js"></script>
 <script>
-  // 🔒 Date lock (Feb 9)
-  checkDate("2026-02-09");
+function checkDay(targetDay, targetMonth) {
+  const now = new Date();
+  const today = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
 
+  const openDate = new Date(
+    now.getFullYear(),
+    targetMonth,
+    targetDay
+  );
+
+  if (today.getTime() === openDate.getTime()) {
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }
+}
   // 🎆 Soft fireworks
   fireworks();
 </script>
