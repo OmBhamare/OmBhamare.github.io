@@ -46,6 +46,8 @@
       max-width: 420px;
       margin: auto;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -59,7 +61,7 @@
       margin-bottom: 20px;
     }
 
-    /* IMAGE FRAME */
+    /* IMAGE */
     .image-wrapper {
       position: relative;
       margin: 30px auto;
@@ -74,11 +76,11 @@
       box-shadow:
         0 0 25px var(--glow),
         0 0 50px rgba(255, 182, 193, 0.6);
-      z-index: 2;
       position: relative;
+      z-index: 2;
     }
 
-    /* SPARKLES */
+    /* SPARKLES (behind image) */
     .sparkle {
       position: absolute;
       width: 6px;
@@ -87,12 +89,45 @@
       border-radius: 50%;
       animation: sparkle 2.5s linear infinite;
       pointer-events: none;
+      z-index: 1;
     }
 
     @keyframes sparkle {
       0% { transform: scale(0); opacity: 0; }
       50% { transform: scale(1); opacity: 1; }
       100% { transform: scale(0); opacity: 0; }
+    }
+
+    /* FIREWORKS */
+    .firework {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: explode 1.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(15); opacity: 0; }
+    }
+
+    /* FLOATING HEARTS (RESTORED 💖) */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
     }
 
     /* QUOTES */
@@ -117,21 +152,6 @@
     footer {
       margin: 40px 0;
       opacity: 0.7;
-    }
-
-    /* FIREWORK */
-    .firework {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      animation: explode 1.5s ease-out forwards;
-      pointer-events: none;
-    }
-
-    @keyframes explode {
-      0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(15); opacity: 0; }
     }
   </style>
 </head>
@@ -202,6 +222,17 @@
     document.getElementById("locked").style.display = "none";
     document.getElementById("content").style.display = "block";
   }
+
+  /* FLOATING HEARTS (RESTORED) */
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }, 600);
 
   /* SPARKLES */
   const imageArea = document.getElementById("imageArea");
