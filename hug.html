@@ -175,19 +175,25 @@
 </div>
 
 <script>
-  // DATE LOCK (Hug Day = Feb 12)
-  const today = new Date();
-  const hugDay = new Date(today.getFullYear(), 1, 12); // Feb = 1
+  /* ===== PREVIEW MODE (FOR YOU) ===== */
+  const params = new URLSearchParams(window.location.search);
+  const isPreview = params.get("preview") === "true";
 
-  if (
+  /* ===== DATE LOGIC ===== */
+  const today = new Date();
+  const hugDay = new Date(today.getFullYear(), 1, 12); // Feb 12
+
+  const isHugDay =
     today.getDate() === hugDay.getDate() &&
-    today.getMonth() === hugDay.getMonth()
-  ) {
+    today.getMonth() === hugDay.getMonth();
+
+  /* ===== SHOW / HIDE CONTENT ===== */
+  if (isHugDay || isPreview) {
     document.getElementById("locked").style.display = "none";
     document.getElementById("content").style.display = "block";
   }
 
-  // FLOATING HEARTS
+  /* ===== FLOATING HEARTS ===== */
   setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -199,6 +205,7 @@
     setTimeout(() => heart.remove(), 7000);
   }, 600);
 </script>
+
 
 </body>
 </html>
