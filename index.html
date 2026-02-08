@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My GitHub Website</title>
+  <meta charset="UTF-8">
+  <title>For Mau ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h1>Hello World 👋</h1>
-  <p>This is my first website on GitHub Pages.</p>
+
+<body class="light">
+
+<div id="lockScreen">
+  <h2>🔐 Private for Mau</h2>
+  <input type="password" id="password" placeholder="Enter password ❤️">
+  <button onclick="unlock()">Open My Heart</button>
+  <p id="error"></p>
+</div>
+
+<div id="content" class="hidden">
+
+  <!-- 🌙 Night Mode -->
+  <button class="modeBtn" onclick="toggleMode()">🌙</button>
+
+  <!-- 🎵 Music -->
+  <audio id="music" loop>
+    <source src="music/romantic.mp3" type="audio/mpeg">
+  </audio>
+  <button class="musicBtn" onclick="toggleMusic()">🎵</button>
+
+  <h1>For My Valentine, Mau ❤️</h1>
+
+  <!-- ⏰ Countdown -->
+  <div id="countdown"></div>
+
+  <!-- 💌 Love Letter -->
+  <button class="loveBtn" onclick="openLetter()">💌 Open Love Letter</button>
+
+  <div id="letter">
+    <div class="letterBox">
+      <span onclick="closeLetter()">❌</span>
+      <h2>My Mau ❤️</h2>
+      <p>
+        From the moment you came into my life,  
+        every day feels like Valentine’s Day.  
+        You are my smile, my peace, my forever.  
+        I love you endlessly, Mau 💖
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
