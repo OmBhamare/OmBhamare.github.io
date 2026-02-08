@@ -1,1 +1,85 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.light {
+  background: #ffe6eb;
+  color: #333;
+}
+
+.dark {
+  background: #121212;
+  color: #f5f5f5;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 🔐 Lock screen */
+#lockScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  padding: 12px;
+  width: 70%;
+  border-radius: 8px;
+  border: none;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  background: #d1005a;
+  color: white;
+  cursor: pointer;
+}
+
+/* Buttons */
+.modeBtn, .musicBtn {
+  position: fixed;
+  top: 15px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.modeBtn { right: 15px; }
+.musicBtn { left: 15px; }
+
+.loveBtn {
+  margin-top: 30px;
+}
+
+/* 💌 Letter popup */
+#letter {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+
+.letterBox {
+  background: white;
+  color: black;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  border-radius: 15px;
+}
+
+/* ⏰ Countdown */
+#countdown {
+  font-size: 20px;
+  margin: 20px;
+}
 
