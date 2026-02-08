@@ -204,18 +204,14 @@ Meri zindagi me bahaar aa jaati hai 🌹
 </div>
 
 <script>
-  /* PREVIEW MODE */
-  const params = new URLSearchParams(window.location.search);
-  const isPreview = params.get("preview") === "true";
-
   /* DATE LOCK (Rose Day = Feb 7) */
   const today = new Date();
-  const roseDay = new Date(today.getFullYear(), 1, 7);
-  const isRoseDay =
-    today.getDate() === roseDay.getDate() &&
-    today.getMonth() === roseDay.getMonth();
+  today.setHours(0,0,0,0); // normalize time
 
-  if (isRoseDay || isPreview) {
+  const roseDay = new Date(today.getFullYear(), 1, 7); // Feb = 1
+  roseDay.setHours(0,0,0,0);
+
+  if (today >= roseDay) {
     document.getElementById("locked").style.display = "none";
     document.getElementById("content").style.display = "block";
   }
