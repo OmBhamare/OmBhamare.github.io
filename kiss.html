@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiss Day 💋 | For Mau</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: radial-gradient(circle at center, #3b0000, #000);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* LOCK */
+  .lock {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .lock-box {
+    background: rgba(0,0,0,0.6);
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 0 40px rgba(255,0,0,0.4);
+  }
+
+  /* CONTENT */
+  .content {
+    display: none;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #ffb6c1;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-style: italic;
+    opacity: 0.85;
+    margin-bottom: 30px;
+  }
+
+  /* HEARTBEAT */
+  .heart-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+  }
+
+  .heart {
+    font-size: 70px;
+    animation: heartbeat 1.2s infinite;
+    filter: drop-shadow(0 0 15px red);
+  }
+
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+  }
+
+  /* MEMORY GALLERY */
+  .gallery {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    margin: 35px 0;
+  }
+
+  .gallery img {
+    height: 220px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255,0,0,0.5);
+    flex-shrink: 0;
+  }
+
+  /* QUOTE */
+  .quote-box {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 22px;
+  }
+
+  .quote {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+
+  .shayari {
+    white-space: pre-line;
+    color: #ffd1dc;
+  }
+
+  footer {
+    text-align: center;
+    margin: 40px 0;
+    opacity: 0.75;
+  }
+
+  /* FLOATING KISSES */
+  .kiss {
+    position: fixed;
+    bottom: -20px;
+    font-size: 22px;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes floatUp {
+    to {
+      transform: translateY(-110vh) scale(1.4);
+      opacity: 0;
+    }
+  }
+
+  /* FIREWORK */
+  .firework {
+    position: fixed;
+    font-size: 22px;
+    animation: explode 2s forwards;
+  }
+
+  @keyframes explode {
+    0% { opacity: 1; transform: scale(0.5); }
+    100% { opacity: 0; transform: scale(2.2); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- LOCK -->
+<div class="lock" id="lock">
+  <div class="lock-box">
+    <h1>💋 Kiss Day 💋</h1>
+    <p>This page unlocks on</p>
+    <p><b>13 February</b></p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content">
+
+  <h1>Happy Kiss Day, Mau 😘</h1>
+  <p class="subtitle">
+    One kiss… one heartbeat… one forever.
+  </p>
+
+  <!-- MUSIC -->
+  <audio autoplay loop>
+    <source src="kiss-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- HEARTBEAT -->
+  <div class="heart-container">
+    <div class="heart">❤️</div>
+  </div>
+
+  <!-- MEMORIES -->
+  <div class="gallery">
+    <img src="kiss1.jpg">
+    <img src="kiss2.jpg">
+    <img src="kiss3.jpg">
+    <img src="kiss4.jpg">
+  </div>
+
+  <!-- QUOTES -->
+  <div class="quote-box">
+    <p class="quote">
+      “Every kiss is a promise… sealed by the heart.”
+    </p>
+
+    <p class="shayari">
+तेरी एक Kiss Mau 💋  
+मेरे दिल की धड़कन बढ़ा देती है  
+लबों से शुरू होकर  
+सीधे रूह तक उतर जाती है ❤️🔥
+    </p>
+  </div>
+
+  <footer>
+    Beating only for you ❤️  
+    — Your Valentine
+  </footer>
+
+</div>
+
+<script>
+  // DATE LOCK — Feb 13
+  const today = new Date();
+  if (today.getDate() === 13 && today.getMonth() === 1) {
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+    // FIREWORKS ON OPEN
+    for (let i = 0; i < 20; i++) {
+      setTimeout(createFirework, i * 250);
+    }
+  }
+
+  function createFirework() {
+    const fw = document.createElement("div");
+    fw.className = "firework";
+    fw.innerText = "✨";
+    fw.style.left = Math.random() * 100 + "vw";
+    fw.style.top = Math.random() * 50 + "vh";
+    document.body.appendChild(fw);
+    setTimeout(() => fw.remove(), 2000);
+  }
+
+  // FLOATING KISSES
+  setInterval(() => {
+    const kiss = document.createElement("div");
+    kiss.className = "kiss";
+    kiss.innerText = "💋";
+    kiss.style.left = Math.random() * 100 + "vw";
+    kiss.style.animationDuration = 5 + Math.random() * 3 + "s";
+    document.body.appendChild(kiss);
+    setTimeout(() => kiss.remove(), 8000);
+  }, 600);
+</script>
+
+</body>
+</html>
