@@ -10,7 +10,8 @@
       --bg1: #fdfbfb;
       --bg2: #ebedee;
       --text: #4a2c2a;
-      --card: rgba(255, 255, 255, 0.8);
+      --card: rgba(255, 255, 255, 0.85);
+      --glow: #ffd6d6;
     }
 
     body {
@@ -21,6 +22,7 @@
       overflow-x: hidden;
     }
 
+    /* LOCK SCREEN */
     .locked {
       display: flex;
       height: 100vh;
@@ -37,48 +39,60 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
-    .lock-box h1 {
-      font-size: 2rem;
-    }
-
-    .lock-box p {
-      opacity: 0.8;
-    }
-
     /* MAIN CONTENT */
     .content {
       display: none;
       padding: 20px;
-      max-width: 900px;
+      max-width: 420px;
       margin: auto;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-top: 20px;
     }
 
     .subtitle {
-      text-align: center;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       opacity: 0.8;
+      margin-bottom: 20px;
     }
 
-    /* MEMORY SCROLL */
-    .memory-frame {
-      margin: 30px 0;
-      overflow-x: auto;
-      display: flex;
-      gap: 15px;
-      padding-bottom: 10px;
+    /* IMAGE FRAME */
+    .image-wrapper {
+      position: relative;
+      margin: 30px auto;
+      width: 100%;
+      max-width: 320px;
     }
 
-    .memory-frame img {
-      height: 200px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      flex-shrink: 0;
+    .image-wrapper img {
+      width: 100%;
+      border-radius: 24px;
+      border: 4px solid white;
+      box-shadow:
+        0 0 25px var(--glow),
+        0 0 50px rgba(255, 182, 193, 0.6);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* SPARKLES */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      animation: sparkle 2.5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
     }
 
     /* QUOTES */
@@ -86,7 +100,7 @@
       background: var(--card);
       padding: 20px;
       border-radius: 20px;
-      margin: 20px 0;
+      margin: 25px 0;
     }
 
     .quote {
@@ -97,26 +111,27 @@
     .shayari {
       white-space: pre-line;
       font-weight: 500;
-    }
-
-    /* HEART FLOAT */
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+      line-height: 1.7;
     }
 
     footer {
-      text-align: center;
       margin: 40px 0;
       opacity: 0.7;
+    }
+
+    /* FIREWORK */
+    .firework {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: explode 1.5s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(15); opacity: 0; }
     }
   </style>
 </head>
@@ -145,18 +160,15 @@
     <source src="hug-song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- MEMORIES -->
-  <div class="memory-frame">
-    <img src="hug1.jpg">
-    <img src="hug2.jpg">
-    <img src="hug3.jpg">
-    <img src="hug4.jpg">
+  <!-- IMAGE -->
+  <div class="image-wrapper" id="imageArea">
+    <img src="1.jpeg" alt="Us 🤍">
   </div>
 
   <!-- QUOTES -->
   <div class="quote-box">
     <p class="quote">
-      “A hug is the perfect gift — one size fits all, and nobody minds if you give it back.”
+      “A hug is the shortest distance between two hearts.”
     </p>
 
     <p class="shayari">
@@ -169,43 +181,50 @@
   </div>
 
   <footer>
-    Forever yours 🤍  
+    Forever yours 🤍<br>
     — Your Valentine
   </footer>
 </div>
 
 <script>
-  /* ===== PREVIEW MODE (FOR YOU) ===== */
+  /* PREVIEW MODE */
   const params = new URLSearchParams(window.location.search);
   const isPreview = params.get("preview") === "true";
 
-  /* ===== DATE LOGIC ===== */
+  /* DATE LOCK */
   const today = new Date();
-  const hugDay = new Date(today.getFullYear(), 1, 12); // Feb 12
-
+  const hugDay = new Date(today.getFullYear(), 1, 12);
   const isHugDay =
     today.getDate() === hugDay.getDate() &&
     today.getMonth() === hugDay.getMonth();
 
-  /* ===== SHOW / HIDE CONTENT ===== */
   if (isHugDay || isPreview) {
     document.getElementById("locked").style.display = "none";
     document.getElementById("content").style.display = "block";
   }
 
-  /* ===== FLOATING HEARTS ===== */
+  /* SPARKLES */
+  const imageArea = document.getElementById("imageArea");
   setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "🤍";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
-    document.body.appendChild(heart);
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    imageArea.appendChild(s);
+    setTimeout(() => s.remove(), 2500);
+  }, 300);
 
-    setTimeout(() => heart.remove(), 7000);
-  }, 600);
+  /* FIREWORKS */
+  setInterval(() => {
+    const f = document.createElement("div");
+    f.className = "firework";
+    f.style.left = Math.random() * 100 + "%";
+    f.style.top = Math.random() * 100 + "%";
+    f.style.background = `hsl(${Math.random()*360},100%,70%)`;
+    imageArea.appendChild(f);
+    setTimeout(() => f.remove(), 1500);
+  }, 1200);
 </script>
-
 
 </body>
 </html>
