@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teddy Day 🧸</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Cute soft font -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/day.css">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffd1dc, #fff0f3);
+      font-family: 'Baloo 2', cursive;
+      color: #5c2a2a;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    .teddy {
+      font-size: 55px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.7);
+      margin: 20px;
+      padding: 22px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .shayari {
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .quote {
+      margin-top: 15px;
+      font-size: 17px;
+      opacity: 0.85;
+    }
+
+    .frame {
+      border: 4px dotted #f48fb1;
+      border-radius: 30px;
+      padding: 12px;
+      margin: 20px;
+      background: #fff;
+    }
+
+    .sparkle {
+      position: fixed;
+      top: -20px;
+      font-size: 22px;
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<canvas></canvas>
+
+<h1>🧸 Teddy Day</h1>
+<div class="teddy">🧸🧸🧸</div>
+
+<p>If I were a teddy, I’d never leave your arms, Mau ❤️</p>
+
+<!-- 🎵 MUSIC -->
+<audio autoplay loop>
+  <source src="music/teddy.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💌 SHAYARI + QUOTE -->
+<div class="card">
+  <div class="shayari">
+    Teddy jaisa naram sa pyaar hai tumhara Mau 🧸<br>
+    Jo bina kuch kahe bhi sukoon de jaata hai ❤️<br>
+    Jab duniya thaka de mujhe,<br>
+    Tumhari baahon ka teddy hi kaafi hota hai 😌
+  </div>
+
+  <div class=
