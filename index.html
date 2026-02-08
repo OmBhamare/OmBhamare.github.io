@@ -1,79 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For Mau ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Valentine Week ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #12001a, #2a0038);
+    color: #fff;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 30px 0 10px;
+    color: #ffb3c6;
+  }
+
+  .subtitle {
+    text-align: center;
+    opacity: 0.8;
+    margin-bottom: 30px;
+  }
+
+  .days {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px;
+  }
+
+  .day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    padding: 18px;
+    border-radius: 18px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.2s;
+  }
+
+  .day:hover {
+    transform: scale(1.02);
+  }
+
+  .day span {
+    font-size: 1.1rem;
+  }
+
+  .status {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  footer {
+    text-align: center;
+    margin: 40px 0;
+    opacity: 0.7;
+  }
+</style>
 </head>
 
-<body class="light">
+<body>
 
-<!-- 🔐 LOCK SCREEN -->
-<div id="lockScreen">
-  <h2>🔐 Only for Mau</h2>
-  <input type="password" id="password" placeholder="Enter password ❤️">
-  <button onclick="unlock()">Open My Heart</button>
-  <p id="error"></p>
-</div>
+<h1>❤️ Valentine Week ❤️</h1>
+<p class="subtitle">Every day opens a new piece of my heart, Mau</p>
 
-<!-- ❤️ MAIN CONTENT -->
-<div id="content" class="hidden">
+<div class="days">
 
-  <button class="modeBtn" onclick="toggleMode()">🌙</button>
-  <button class="musicBtn" onclick="toggleMusic()">🎵</button>
+  <a class="day" href="rose.html">
+    <span>🌹 Rose Day</span>
+    <span class="status">Opens 7 Feb</span>
+  </a>
 
-  <audio id="music" loop>
-    <source src="music/romantic.mp3" type="audio/mpeg">
-  </audio>
+  <a class="day" href="propose.html">
+    <span>💍 Propose Day</span>
+    <span class="status">Opens 8 Feb</span>
+  </a>
 
-  <h1>For My Valentine, Mau ❤️</h1>
-  <div id="countdown"></div>
+  <a class="day" href="chocolate.html">
+    <span>🍫 Chocolate Day</span>
+    <span class="status">Opens 9 Feb</span>
+  </a>
 
-  <!-- 💝 VALENTINE WEEK -->
-  <h2>💝 Valentine Week</h2>
-  <div class="week">
-    <div class="vday" data-date="2026-02-07">🌹 Rose Day<br><span>My rose is you</span></div>
-    <div class="vday" data-date="2026-02-08">💍 Propose Day<br><span>Forever with me?</span></div>
-    <div class="vday" data-date="2026-02-09">🍫 Chocolate Day<br><span>Sweet like you</span></div>
-    <div class="vday" data-date="2026-02-10">🧸 Teddy Day<br><span>Warm hugs</span></div>
-    <div class="vday" data-date="2026-02-11">🤝 Promise Day<br><span>Always us</span></div>
-    <div class="vday" data-date="2026-02-12">🤗 Hug Day<br><span>Hold me</span></div>
-    <div class="vday" data-date="2026-02-13">😘 Kiss Day<br><span>All mine</span></div>
-  </div>
+  <a class="day" href="teddy.html">
+    <span>🧸 Teddy Day</span>
+    <span class="status">Opens 10 Feb</span>
+  </a>
 
-  <!-- 💌 LOVE LETTER -->
-  <button class="loveBtn" onclick="openLetter()">💌 Love Letter</button>
+  <a class="day" href="promise.html">
+    <span>🤞 Promise Day</span>
+    <span class="status">Opens 11 Feb</span>
+  </a>
 
-  <div id="letter">
-    <div class="letterBox">
-      <span onclick="closeLetter()">❌</span>
-      <h2>My Mau ❤️</h2>
-      <p>
-        You are my favorite thought, my calm place, my forever.
-        I don’t need a special day to love you,  
-        but Valentine’s Day feels perfect because it’s you.
-        I love you endlessly ❤️
-      </p>
-    </div>
-  </div>
+  <a class="day" href="hug.html">
+    <span>🤍 Hug Day</span>
+    <span class="status">Opens 12 Feb</span>
+  </a>
 
-  <!-- 📸 GALLERY -->
-  <h2>📸 Our Memories</h2>
-  <div class="gallery">
-    <img src="images/mau.jpg">
-    <img src="images/memory1.jpg">
-    <img src="images/memory2.jpg">
-  </div>
+  <a class="day" href="kiss.html">
+    <span>💋 Kiss Day</span>
+    <span class="status">Opens 13 Feb</span>
+  </a>
 
-  <!-- 🎆 FIREWORKS -->
-  <canvas id="fireworks"></canvas>
+  <a class="day" href="valentine.html">
+    <span>❤️ Valentine’s Day</span>
+    <span class="status">Final Surprise 🔐</span>
+  </a>
 
 </div>
 
-<!-- 💖 FLOATING TEXT -->
-<div class="float">I ❤️ You Mau</div>
+<footer>
+  Made with ❤️ only for Mau
+</footer>
 
-<script src="script.js"></script>
 </body>
 </html>
