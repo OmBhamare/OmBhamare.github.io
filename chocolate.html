@@ -90,25 +90,17 @@
 
 <script src="js/day.js"></script>
 <script>
-function checkDay(targetDay, targetMonth) {
-  const now = new Date();
-  const today = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate()
-  );
-
-  const openDate = new Date(
-    now.getFullYear(),
-    targetMonth,
-    targetDay
-  );
-
-  if (today.getTime() === openDate.getTime()) {
-    document.getElementById("lock").style.display = "none";
-    document.getElementById("content").style.display = "block";
+  function checkDayStrict(day, month) {
+    const now = new Date();
+    if (now.getDate() === day && now.getMonth() === month) {
+      document.getElementById("lock").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    }
   }
-}
+
+  // Chocolate Day = Feb 9
+  checkDayStrict(9, 1);
+
   // 🎆 Soft fireworks
   fireworks();
 </script>
