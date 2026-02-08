@@ -1,203 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hug Day 🤍 | For Mau</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teddy Day 🧸</title>
 
   <style>
-    :root {
-      --bg1: #fdfbfb;
-      --bg2: #ebedee;
-      --text: #4a2c2a;
-      --card: rgba(255, 255, 255, 0.8);
+    :root{
+      --bg1:#fff1e6;
+      --bg2:#f7d9c4;
+      --card:rgba(255,255,255,0.9);
+      --text:#5a3e36;
+      --glow:#ffb703;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      overflow-x: hidden;
+    body{
+      margin:0;
+      font-family:'Segoe UI',sans-serif;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      overflow-x:hidden;
     }
 
-    .locked {
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+    /* LOCK */
+    .locked{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
     }
 
-    .lock-box {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    .lock-box{
+      background:var(--card);
+      padding:32px;
+      border-radius:26px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.15);
     }
 
-    .lock-box h1 {
-      font-size: 2rem;
+    /* CONTENT */
+    .content{
+      display:none;
+      max-width:420px;
+      margin:auto;
+      padding:20px;
+      text-align:center;
+      position:relative;
+      z-index:1;
     }
 
-    .lock-box p {
-      opacity: 0.8;
+    h1{
+      font-size:2.3rem;
+      margin-top:20px;
     }
 
-    /* MAIN CONTENT */
-    .content {
-      display: none;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
+    .subtitle{
+      font-size:1.05rem;
+      opacity:.85;
+      margin-bottom:22px;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-top: 20px;
+    /* IMAGE */
+    .image-wrapper{
+      position:relative;
+      margin:35px auto;
+      max-width:320px;
     }
 
-    .subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      opacity: 0.8;
+    .image-wrapper img{
+      width:100%;
+      border-radius:30px;
+      border:4px solid #fff;
+      box-shadow:
+        0 0 20px var(--glow),
+        0 0 45px rgba(255,183,3,.6);
+      animation:softBounce 3.5s infinite;
+      z-index:2;
+      position:relative;
     }
 
-    /* MEMORY SCROLL */
-    .memory-frame {
-      margin: 30px 0;
-      overflow-x: auto;
-      display: flex;
-      gap: 15px;
-      padding-bottom: 10px;
+    @keyframes softBounce{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-6px);}
     }
 
-    .memory-frame img {
-      height: 200px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      flex-shrink: 0;
+    /* SPARKLES */
+    .sparkle{
+      position:absolute;
+      width:6px;
+      height:6px;
+      background:rgba(255,255,255,.9);
+      border-radius:50%;
+      animation:sparkle 2.5s linear infinite;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    @keyframes sparkle{
+      0%{transform:scale(0);opacity:0;}
+      50%{transform:scale(1);opacity:1;}
+      100%{transform:scale(0);opacity:0;}
+    }
+
+    /* FLOATING TEDDIES & HEARTS */
+    .float{
+      position:fixed;
+      bottom:-20px;
+      font-size:20px;
+      animation:floatUp 7s linear infinite;
+      opacity:.75;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    @keyframes floatUp{
+      0%{transform:translateY(0) scale(1);}
+      100%{transform:translateY(-120vh) scale(1.4);opacity:0;}
     }
 
     /* QUOTES */
-    .quote-box {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 20px;
-      margin: 20px 0;
+    .quote-box{
+      background:var(--card);
+      padding:24px;
+      border-radius:24px;
+      margin:25px 0;
     }
 
-    .quote {
-      font-style: italic;
-      margin-bottom: 15px;
+    .quote{
+      font-style:italic;
+      margin-bottom:16px;
     }
 
-    .shayari {
-      white-space: pre-line;
-      font-weight: 500;
+    .shayari{
+      white-space:pre-line;
+      line-height:1.8;
+      font-weight:500;
     }
 
-    /* HEART FLOAT */
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
-    }
-
-    footer {
-      text-align: center;
-      margin: 40px 0;
-      opacity: 0.7;
+    footer{
+      margin:40px 0;
+      opacity:.75;
     }
   </style>
 </head>
 
 <body>
 
-<!-- LOCK SCREEN -->
+<!-- LOCK -->
 <div class="locked" id="locked">
   <div class="lock-box">
-    <h1>🤍 Hug Day 🤍</h1>
-    <p>This page opens only on Hug Day</p>
-    <p>Come back on <b>12 February</b></p>
+    <h1>🧸 Teddy Day 🧸</h1>
+    <p>This page opens only on Teddy Day</p>
+    <p>Come back on <b>10 February</b></p>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- CONTENT -->
 <div class="content" id="content">
 
-  <h1>Happy Hug Day, Mau 🤍</h1>
+  <h1>Happy Teddy Day, Mau 🧸</h1>
   <p class="subtitle">
-    If I could, I’d wrap my arms around you and never let go.
+    If I can’t hug you… let this teddy do it for me.
   </p>
 
   <!-- MUSIC -->
   <audio autoplay loop>
-    <source src="hug-song.mp3" type="audio/mpeg">
+    <source src="teddy-song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- MEMORIES -->
-  <div class="memory-frame">
-    <img src="hug1.jpg">
-    <img src="hug2.jpg">
-    <img src="hug3.jpg">
-    <img src="hug4.jpg">
+  <!-- IMAGE -->
+  <div class="image-wrapper" id="imageArea">
+    <img src="1.jpeg" alt="Teddy Love">
   </div>
 
   <!-- QUOTES -->
   <div class="quote-box">
     <p class="quote">
-      “A hug is the perfect gift — one size fits all, and nobody minds if you give it back.”
+      “A teddy bear has magical powers — it absorbs tears and gives warmth.”
     </p>
 
     <p class="shayari">
-तेरी एक झप्पी में सुकून मिल जाता है 🤍  
-सारी थकान, सारे ग़म मिट जाते हैं 🤍  
-कभी दूर मत जाना मुझसे Mau,  
-क्योंकि तेरे गले लगने से ही  
-मेरी दुनिया बस जाती है 🤍
+Ye teddy sirf toy nahi hai 🧸  
+Ismein meri care, meri warmth chhupi hai  
+Jab bhi tum udaas ho Mau,  
+Bas ise gale laga lena…  
+Samajh lena main wahin hoon 🤍
     </p>
   </div>
 
   <footer>
-    Forever yours 🤍  
-    — Your Valentine
+    Your forever teddy 🧸<br>
+    — Always Yours
   </footer>
+
 </div>
 
 <script>
-  // DATE LOCK (Hug Day = Feb 12)
-  const today = new Date();
-  const hugDay = new Date(today.getFullYear(), 1, 12); // Feb = 1
+  /* PREVIEW MODE */
+  const params=new URLSearchParams(window.location.search);
+  const isPreview=params.get("preview")==="true";
 
-//  if (
-    today.getDate() === hugDay.getDate() &&
-    today.getMonth() === hugDay.getMonth()
-  ) {
-    document.getElementById("locked").style.display = "none";
-    document.getElementById("content").style.display = "block";
+  /* DATE LOCK (Feb 10) */
+  const today=new Date();
+  const teddyDay=new Date(today.getFullYear(),1,10);
+
+  if(
+    (today.getDate()===teddyDay.getDate() &&
+     today.getMonth()===teddyDay.getMonth())
+     || isPreview
+  ){
+    document.getElementById("locked").style.display="none";
+    document.getElementById("content").style.display="block";
   }
 
-  // FLOATING HEARTS
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "🤍";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
-    document.body.appendChild(heart);
+  /* FLOATING ELEMENTS */
+  setInterval(()=>{
+    const f=document.createElement("div");
+    f.className="float";
+    f.innerText=Math.random()>0.5?"🧸":"🤍";
+    f.style.left=Math.random()*100+"vw";
+    f.style.animationDuration=5+Math.random()*3+"s";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),8000);
+  },700);
 
-    setTimeout(() => heart.remove(), 7000);
-  }, 600);
+  /* IMAGE SPARKLES */
+  const area=document.getElementById("imageArea");
+  setInterval(()=>{
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"%";
+    s.style.top=Math.random()*100+"%";
+    area.appendChild(s);
+    setTimeout(()=>s.remove(),2500);
+  },450);
 </script>
 
 </body>
